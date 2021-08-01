@@ -14,6 +14,10 @@ namespace Electro.Areas.Admin.Controllers
         ElectroDbContext db = new ElectroDbContext();
         public ActionResult Index(int ? page)
         {
+            if(Session["Admin"] == null)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             int pageNum = page ?? 1;
             var lstKM = db.KhuyenMais.ToList().OrderBy(n => n.MaKM).ToPagedList(pageNum, 7);
             return View(lstKM);

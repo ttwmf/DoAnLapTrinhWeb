@@ -143,10 +143,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DoanhThuController.cs" />
     <Compile Include="Areas\Admin\Controllers\DonHangController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\KhachHangAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\KhuyenMaiController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NhaSanXuatAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\DanhGiaController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
@@ -253,6 +255,9 @@
     <Content Include="Areas\Admin\Views\KhuyenMai\ThemKhuyenMai.cshtml" />
     <Content Include="Areas\Admin\Views\KhuyenMai\ThemMoiSanPhamKM.cshtml" />
     <Content Include="Areas\Admin\Views\KhuyenMai\Sua.cshtml" />
+    <Content Include="Areas\Admin\Views\DoanhThu\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NhaSanXuatAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NhaSanXuatAdmin\SanPham.cshtml" />
     <None Include="Scripts\wtf\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\wtf\jquery-3.4.1.js" />
     <Content Include="Scripts\wtf\jquery-3.4.1.min.js" />

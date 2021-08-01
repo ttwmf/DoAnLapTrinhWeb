@@ -64,9 +64,6 @@
             <th style="text-align:center; width:5%">
                 Nhà cung cấp
             </th>
-            <th style="text-align:center; width:5%">
-                Thương hiệu
-            </th>
             <th style="text-align:center"></th>
         </tr>
 
@@ -110,12 +107,9 @@
                 <td style="text-align:center">
                     @item.NhaCungCap.TenNCC
                 </td>
-                <td style="text-align:center">
-                    @item.NhaSanXuat.TenNSX
-                </td>
                 <td>
-                    <a href="@Url.Action("Sua", new { MaSP = item.MaSP , url = Request.Url.ToString()})" class="btn btn-warning" role="button">Sửa</a>
-                    <a href="@Url.Action("ChiTiet", new { MaSP = item.MaSP , url = Request.Url.ToString()})" class="btn btn-primary" role="button">Chi tiết</a>
+                    <a href="@Url.Action("Sua", "SanPham", new { MaSP = item.MaSP , url = Request.Url.ToString()})" class="btn btn-warning" role="button">Sửa</a>
+                    <a href="@Url.Action("ChiTiet", "SanPham", new { MaSP = item.MaSP , url = Request.Url.ToString()})" class="btn btn-primary" role="button">Chi tiết</a>
                     <a href="@Url.Action("Xoa", new { MaSP = item.MaSP })" class="btn btn-danger" role="button">Xóa</a>
                 </td>
             </tr>
@@ -124,13 +118,14 @@
     </table>
 
     <div class="MenuTrang">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+        @Html.PagedListPager(Model, page => Url.Action("SanPham", "NhaSanXuatAdmin" , new { MaNSX = ViewBag.MaNSX, page = page, url = ViewBag.Url }))
 
     </div>
     <div style="margin-left:90%">
         <a href="@Url.Action("Create")" class="btn btn-info" role="button" style="font-weight:bold; color:red;">Thêm mới</a>
     </div>
 </div>
+<a href="@ViewBag.Url" class="btn btn-primary" role="button" style="font-size:20px"><<</a>
 <style>
     .MenuTrang {
         display: inline;
