@@ -18,6 +18,7 @@ namespace Electro.Models
         public virtual DbSet<ChiTietKhuyenMai> ChiTietKhuyenMais { get; set; }
         public virtual DbSet<ChiTietPhieuNhap> ChiTietPhieuNhaps { get; set; }
         public virtual DbSet<DonDatHang> DonDatHangs { get; set; }
+        public virtual DbSet<EmailKhuyenMai> EmailKhuyenMais { get; set; }
         public virtual DbSet<GioHang> GioHangs { get; set; }
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
         public virtual DbSet<KhuyenMai> KhuyenMais { get; set; }
@@ -43,6 +44,11 @@ namespace Electro.Models
             modelBuilder.Entity<Admin>()
                 .Property(e => e.DienThoai)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Admin>()
+                .HasMany(e => e.PhieuNhaps)
+                .WithOptional(e => e.Admin)
+                .HasForeignKey(e => e.NguoiNhap);
 
             modelBuilder.Entity<BinhLuan>()
                 .Property(e => e.Email)
@@ -72,6 +78,10 @@ namespace Electro.Models
                 .HasMany(e => e.ChiTietDonDatHangs)
                 .WithRequired(e => e.DonDatHang)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<EmailKhuyenMai>()
+                .Property(e => e.Email)
+                .IsUnicode(false);
 
             modelBuilder.Entity<KhachHang>()
                 .Property(e => e.TaiKhoan)

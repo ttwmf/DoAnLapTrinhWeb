@@ -27,6 +27,8 @@ namespace Electro.Models
         [Column(TypeName = "money")]
         public decimal? DonGiaBan { get; set; }
 
+        public bool? DaXoa { get; set; }
+
         public virtual DonDatHang DonDatHang { get; set; }
 
         public virtual SanPham SanPham { get; set; }

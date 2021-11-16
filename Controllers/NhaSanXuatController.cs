@@ -32,7 +32,7 @@ namespace Electro.Controllers
         {
             ViewBag.MaNSX = MaNSX;
             int PageNum = Page ?? 1;
-            var kq = (from sp in db.SanPhams where sp.MaNSX == MaNSX select sp).OrderBy(n => n.MaSP).ToList(); ;
+            var kq = (from sp in db.SanPhams where sp.MaNSX == MaNSX select sp).OrderBy(n => n.MaSP).ToList();
             int MaKM = LayMaKM();
             ViewBag.SPKM = from ctkm in db.ChiTietKhuyenMais
                            join km in db.KhuyenMais on ctkm.MaKM equals km.MaKM

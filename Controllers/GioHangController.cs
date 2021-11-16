@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Electro.Models;
+using System.Net;
+using System.Net.Mail;
 namespace Electro.Controllers
 {
     public class GioHangController : Controller
@@ -223,7 +225,7 @@ namespace Electro.Controllers
             ddh.PhuongThucThanhToan = "Thanh toán khi nhận hàng";
             if(pttt == 1)
             {
-                ddh.PhuongThucThanhToan = "Chuyển khoản";
+                ddh.PhuongThucThanhToan = "Đã chuyển khoản";
             }
             ddh.TongTien = TongSoTien;
             db.DonDatHangs.Add(ddh);
@@ -292,7 +294,19 @@ namespace Electro.Controllers
                 CapNhatSoLuongTon(item.MaSP, item.SoLuongTrongGioHang);
             }
             db.SaveChanges();
-
+            // Send mail
+            var mail = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new NetworkCredential("email@...", "password"),
+                EnableSsl = true,
+            };
+            var message = new MailMessage();
+            var mailFrom = "hoangquangthai57@gmail.com";
+            message.From = new MailAddress("hoangquangthai57@gmail.com");
+            message.ReplyToList.Add(mailFrom);
+            message.To.Add(new MailAddress(ddh.Email));
+            message.Subject = "Don Hang So 1424 Da dat thanh cong" ;
+            mail.Send(message);
             XoaToanBoGioHang();
             return RedirectToAction("Index", "Home");
         }

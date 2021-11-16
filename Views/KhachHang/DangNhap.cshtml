@@ -9,31 +9,32 @@
     td {
         height: 40px;
     }
-</style>
-<h4 style="color:red; text-align:center;">@ViewBag.ThongBao</h4>
-<h2 style="text-align:center;">ĐĂNG NHẬP</h2>
-<table align="center">
-    @using (Html.BeginForm())
-    {
-        @Html.ValidationSummary(true)
-        <tr>
-            <td>Tên đăng nhập: </td>
-            <td>
-                @Html.TextBox("TenDN") @ViewData["Err1"]
-            </td>
-        </tr>
-        <tr>
-            <td>Mật khẩu: </td>
-            <td>
-                @Html.Password("MatKhau") @ViewBag.Err2
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <input type="submit" value="Đăng nhập" />
-            </td>
-        </tr>
+
+    .login {
+        background-color: whitesmoke;
     }
 
-</table>
+</style>
+<h4 style="color:red; text-align:center;">@ViewBag.ThongBao</h4>
+
+<section class="containerdm">
+    <div class="login">
+        <h1>Đăng nhập</h1>
+        @using (Html.BeginForm())
+        {
+            <p><input type="text" name="TenDN" value="" placeholder="Tên đăng nhập"></p>
+            <p><input type="password" name="MatKhau" value="" placeholder="Mật khẩu"></p>
+            <p class="remember_me">
+                <label>
+                    <input type="checkbox" name="remember_me" id="remember_me">
+                    Lưu thông tin đăng nhập
+                </label>
+            </p>
+            <p class="submit"><input type="submit" name="commit" value="Đăng nhập"></p>
+        }
+    </div>
+
+    <div class="login-help">
+        <p>Chưa có tài khoản? <a href="@Url.Action("DangKy", "KhachHang")">Đăng ký</a>.</p>
+    </div>
+</section>

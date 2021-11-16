@@ -23,7 +23,7 @@ namespace Electro.Areas.Admin.Controllers
 
             int iPageNum = (page ?? 1);
             int iPageSize = 7;
-            var lst = db.SanPhams.ToList().OrderBy(n => n.MaSP).ToPagedList(iPageNum, iPageSize);
+            var lst = db.SanPhams.ToList().OrderBy(n => n.MaSP).Where(n => n.DaXoa == false).ToPagedList(iPageNum, iPageSize);
             return View(lst);
 
         }
@@ -83,6 +83,13 @@ namespace Electro.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
+        }
+        public ActionResult Xoa(int MaSP)
+        {
+            var sp = db.SanPhams.SingleOrDefault(n => n.MaSP == MaSP);
+            sp.DaXoa = true;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
     }

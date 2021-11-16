@@ -41,6 +41,9 @@ namespace Electro.Models
         [Column(TypeName = "money")]
         public decimal? TongTien { get; set; }
 
+        [StringLength(200)]
+        public string TinhTrang { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonDatHang> ChiTietDonDatHangs { get; set; }
 

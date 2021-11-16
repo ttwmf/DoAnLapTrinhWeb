@@ -41,6 +41,8 @@ namespace Electro.Controllers
                 KhachHang kh = db.KhachHangs.SingleOrDefault(n => n.TaiKhoan == sTenDN && n.MatKhau == sMatKhau);
                 if (kh != null)
                 {
+                    // Cập nhật lại giỏ hàng
+
                     int state = int.Parse(Request.QueryString["id"]);
                     ViewBag.ThongBao = "Chúc mừng đăng nhập thành công  ";
                     ViewBag.GioHang = (from gh in db.GioHangs where gh.MaKH == kh.MaKH select gh).Count();
@@ -66,6 +68,15 @@ namespace Electro.Controllers
         {
             Session["TaiKhoan"] = null;
             return Redirect("~/Home/Index");
+        }
+        public ActionResult DangNhap2()
+        {
+            return View();
+        }
+
+        public ActionResult DangKy()
+        {
+            return View();
         }
 
     }

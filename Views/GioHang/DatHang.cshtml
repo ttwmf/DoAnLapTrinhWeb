@@ -3,7 +3,7 @@
 
 @{
     ViewBag.Title = "ThanhToan";
-    Layout = "~/Views/Shared/_LayoutKhachHang.cshtml";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
 <div class="section">
     <!-- container -->
@@ -47,7 +47,8 @@
                                        type="email"
                                        name="Email"
                                        value="@kh.Email"
-                                       placeholder="Email" />
+                                       placeholder="Email" 
+                                       required/>
                             </div>
                         </div>
                         <!-- /Billing Details -->
@@ -180,7 +181,7 @@
                         </div>
                     </div>
                     <div style="padding-left:100px">
-                        <button type="submit" class="primary-btn order-submit">Xác nhận đặt hàng</button>
+                        <button type="submit"  class="primary-btn order-submit">Xác nhận đặt hàng</button>
                     </div>
                     
                 </div>

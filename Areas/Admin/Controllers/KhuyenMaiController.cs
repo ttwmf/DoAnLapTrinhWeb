@@ -67,8 +67,13 @@ namespace Electro.Areas.Admin.Controllers
             ViewBag.MaKM = MaKM;
             var lstSP = (from sp in db.SanPhams
                          where !db.ChiTietKhuyenMais.Any(es => (es.MaSP == sp.MaSP) && es.MaKM == MaKM)
-                         select sp).OrderBy(n => n.MaSP).ToList();
-            ViewBag.MaSP = new SelectList( lstSP,"MaSP", "MaSP", lstSP.First().MaSP);
+                         select sp).Where(sp => sp.DaXoa == false).OrderBy(n => n.MaSP).ToList();
+
+            ViewBag.MaSP = new SelectList(lstSP, "MaSP", "MaSP", lstSP.First().MaSP);
+
+            /*            var lstSP= new List<string>(){"Đang xử lý", "Đã giao", "Đang giao", "Hủy"};
+                        ViewBag.MaSP = new SelectList(lstSP, "MaSP", "MaSP", "Đang xử lý");*/
+
 
             return View();
 

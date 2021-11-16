@@ -24,19 +24,18 @@ namespace Electro.Models
         public virtual KhachHang KhachHang { get; set; }
 
         public virtual SanPham SanPham { get; set; }
-        public GioHang()
-        {
-        }
-        public GioHang(int MaSP, int SoLuong)
+        public GioHang() { }
+        public GioHang(int MaSP, int SL)
         {
             this.MaSP = MaSP;
             this.SoLuong = 1;
         }
-        public GioHang(int MaSP, int MaKH, int SoLuong)
+
+        public GioHang(int MaSP, int MaKH, int SL)
         {
-            this.MaKH = MaKH;
             this.MaSP = MaSP;
-            this.SoLuong = SoLuong;
+            this.MaKH = MaKH;
+            this.SoLuong = SL;
         }
     }
 }

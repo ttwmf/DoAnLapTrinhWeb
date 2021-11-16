@@ -13,7 +13,7 @@
             @Html.Action("GioHangPartial", "GioHang");
             @if (Session["TaiKhoan"] == null)
             {
-                <li><a href="#"><i class="fa fa-user-o"></i><span>Đăng ký</span></a></li>
+                <li><a href="@Url.Action("DangKy", "KhachHang")"><i class="fa fa-user-o"></i><span>Đăng ký</span></a></li>
                 <li><a href="~/KhachHang/DangNhap?id=1"><i class="fa fa-user-o"></i> Đăng nhập</a></li>
             }
             else

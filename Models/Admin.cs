@@ -9,6 +9,12 @@ namespace Electro.Models
     [Table("Admin")]
     public partial class Admin
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Admin()
+        {
+            PhieuNhaps = new HashSet<PhieuNhap>();
+        }
+
         [Key]
         public int MaAdmin { get; set; }
 
@@ -33,5 +39,8 @@ namespace Electro.Models
 
         [Column(TypeName = "date")]
         public DateTime? NgaySinh { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PhieuNhap> PhieuNhaps { get; set; }
     }
 }

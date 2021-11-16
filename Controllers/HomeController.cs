@@ -96,10 +96,26 @@ namespace Electro.Controllers
             ViewBag.NgayKetThuc = km.NgayKetThuc;
             return PartialView(km);
         }
+        [HttpGet]
         public ActionResult FooterPartial()
         {
             return PartialView();
         }
+        [HttpPost]
+        public ActionResult FooterPartial(FormCollection f)
+        {
+            var email = f["email"];
+            var check = db.EmailKhuyenMais.SingleOrDefault(e => e.Email.Equals(email));
+            if(check == null)
+            {
+                EmailKhuyenMai em = new EmailKhuyenMai();
+                em.Email = email;
+                db.EmailKhuyenMais.Add(em);
+                db.SaveChanges();
+            }
+            return PartialView();
+        }
+    
 
         public ActionResult SanPhamKhuyenMai(int ? Page)
         {
@@ -122,5 +138,7 @@ namespace Electro.Controllers
             return View(listSPKM.ToPagedList(PageNum, 8));
 
         }
+
+
     }
 }

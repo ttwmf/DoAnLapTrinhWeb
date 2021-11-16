@@ -32,5 +32,17 @@ namespace Electro.Areas.Admin.Controllers
             var lstChiTietDonHang = db.ChiTietDonDatHangs.Select(n => n).Where(n => n.MaDDH == MaDDH);
             return View(lstChiTietDonHang);
         }
+        public ActionResult Xoa(int MaDDH)
+        {
+            var lst = db.ChiTietDonDatHangs.Where(n => n.MaDDH == MaDDH).ToList();
+            foreach(ChiTietDonDatHang ctddh in lst)
+            {
+                db.ChiTietDonDatHangs.Remove(ctddh);
+            }
+
+            db.DonDatHangs.Remove(db.DonDatHangs.SingleOrDefault(n => n.MaDDH == MaDDH));
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

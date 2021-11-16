@@ -27,7 +27,7 @@
 
     <table class="table-hover">
         <tr style="background-color:darkgray">
-            <th style="text-align:center; width:7%">
+            <th style="text-align:center; width:5%">
                 Mã đơn hàng
             </th>
             <th style="text-align:center; width:10%">
@@ -37,15 +37,18 @@
             <th style="text-align:center; width:10%">
                 Điện thoại
             </th>
-            <th style="text-align:center; width:15%">
+            <th style="text-align:center; width:12%">
                 Địa chỉ giao hàng
             </th>
             <th style="text-align:center; width:12%">
                 Email
             </th>
 
-            <th style="text-align:center; width:15%">
+            <th style="text-align:center; width:12%">
                 Phương thức thanh toán
+            </th>
+            <th style="text-align:center; width:8%">
+                Tình trạng
             </th>
             <th style="text-align:center; width:5%">
                 Ngày lập đơn
@@ -58,38 +61,41 @@
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td style="text-align:center; font-weight:bold">
-                    @item.MaDDH
-                </td>
-                <td style="text-align:center">
-                    @item.Hoten
-                </td>
-                <td style="text-align:center">
-                    @item.DienThoai
-                </td>
-                <td style="text-align:center">
-                    @item.DiaChiGiaoHang
-                </td>
-                <td style="text-align:center">
-                    @item.Email
-                </td>
-                <td style="text-align:center">
-                    @item.PhuongThucThanhToan
-                </td>
+    <tr>
+        <td style="text-align:center; font-weight:bold">
+            @item.MaDDH
+        </td>
+        <td style="text-align:center">
+            @item.Hoten
+        </td>
+        <td style="text-align:center">
+            @item.DienThoai
+        </td>
+        <td style="text-align:center">
+            @item.DiaChiGiaoHang
+        </td>
+        <td style="text-align:center">
+            @item.Email
+        </td>
+        <td style="text-align:center">
+            @item.PhuongThucThanhToan
+        </td>
+        <td style="text-align:center">
+            @item.TinhTrang
+        </td>
 
-                <td style="text-align:center">
-                    @Html.FormatValue(item.NgayLap, "{0:dd/MM/yyyy}")
-                </td>
-                <td style="text-align:center">
-                    @string.Format("{0:#,##0,0}", item.TongTien)
-                </td>
-                <td>
-                    <a href="@Url.Action("Sua", new { MaDDH = item.MaDDH , url = Request.Url.ToString()})" class="btn btn-warning" role="button">Sửa</a>
-                    <a href="@Url.Action("ChiTietDonHang", new { MaDDH = item.MaDDH , url = Request.Url.ToString()})" class="btn btn-primary" role="button">Chi tiết</a>
-                    <a href="@Url.Action("Xoa", new { MaDDH = item.MaDDH })" class="btn btn-danger" role="button">Xóa</a>
-                </td>
-            </tr>
+        <td style="text-align:center">
+            @Html.FormatValue(item.NgayLap, "{0:dd/MM/yyyy}")
+        </td>
+        <td style="text-align:center">
+            @string.Format("{0:#,##0,0}", item.TongTien)
+        </td>
+        <td>
+            <a href="@Url.Action("Sua", new { MaDDH = item.MaDDH , url = Request.Url.ToString()})" class="btn btn-warning" role="button">Sửa</a>
+            <a href="@Url.Action("ChiTietDonHang", new { MaDDH = item.MaDDH , url = Request.Url.ToString()})" class="btn btn-primary" role="button">Chi tiết</a>
+            <a href="@Url.Action("Xoa", new { MaDDH = item.MaDDH })" class="btn btn-danger" role="button">Xóa</a>
+        </td>
+    </tr>
         }
 
     </table>
